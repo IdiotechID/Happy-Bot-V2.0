@@ -1,6 +1,5 @@
 from datetime import datetime
 import pytz
-from dateutil.parser import parse
 
 import settings
 
@@ -14,11 +13,12 @@ for zone in settings.timezones[1:]:
     time = datetime.now(pytz.timezone(zone))
     timezones += "| **" + zone + " " + "**" + ": {0}".format(time.strftime("%I:%M %p")) + " "
 
-print(timezones)
-#bool for keeping track of if the author is a mod.
-isMod = False
 
 def handler(client, message):
+
+    #bool for keeping track of if the author is a mod.
+    isMod = False
+
     for role in message.author.roles:
         if role.id == settings.modRole:
             isMod = True
