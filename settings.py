@@ -1,5 +1,5 @@
 modRole = "222359639575101442" #The id of the mod role. Can be found by typing "\@MOD-ROLE-MENTION"
-operator = "/"
+operator = "!"
 
 helpText = """Here are all the current commands:
 <> means an optional argument
