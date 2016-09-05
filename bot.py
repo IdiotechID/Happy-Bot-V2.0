@@ -1,6 +1,5 @@
 import discord, asyncio, logging, autoresponses, random
-
-import commands
+from commands import time
 import settings
 
 logger = logging.getLogger('discord')
@@ -24,13 +23,37 @@ def on_ready():
 @client.event
 @asyncio.coroutine
 def on_message(message):
+    #Only listen to messages not from the bot.
     if message.author.id != client.user.id:
+
+        #checks for trigger words in messages
         for response in autoresponses.responses:
             if response in message.content:
                 yield from client.send_message(message.channel, random.choice(autoresponses.responses[response]))
 
+        #checks for trigger words in questions
+
+
+    #Checks for a command
     if message.content.startswith(settings.operator):
-        yield from client.send_message(message.channel, commands.handler(client, message))
+        #The command without the operator EG: giveaway start
+        command = message.content[1:]
+        #bool for keeping track of if the author is a mod.
+        isMod = False
+
+        for role in message.author.roles:
+            if role.id == settings.modRole:
+                isMod = True
+
+        if isMod:
+            #Mod only commands
+            print("")
+
+        #@everyone commands.
+        if message.content.startswith(settings.operator):
+
+            if command.split()[0] == "time":
+                yield from client.send_message(message.channel, time.timezones)
 
 
 
