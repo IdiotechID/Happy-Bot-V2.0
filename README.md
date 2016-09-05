@@ -11,18 +11,18 @@ Todo:
 - [x] Add question handling
 - [ ] Add polls
 - [ ] Add giveaways
-- [ ]*/rules*
-- [x]/time
-- [ ]/games
-- [ ]*/links*
-- [ ]*/specs*
-- [ ]*/youtube*
-- [ ]*/twitter*
-- [ ]*/twitch*
-- [ ]*/patreon*
-- [ ]*/donate*
-- [ ]*/facebook*
-- [ ]*/reddit*
-- [ ]/roll DiceSides
-- [ ]/fight PlayerName
-- [ ]/hug @Username
+- [ ] */rules*
+- [x] /time
+- [ ] /games
+- [ ] */links*
+- [ ] */specs*
+- [ ] */youtube*
+- [ ] */twitter*
+- [ ] */twitch*
+- [ ] */patreon*
+- [ ] */donate*
+- [ ] */facebook*
+- [ ] */reddit*
+- [ ] /roll DiceSides
+- [ ] /fight PlayerName
+- [ ] /hug @Username
