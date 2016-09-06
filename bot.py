@@ -95,8 +95,8 @@ def on_message(message):
                         botTalk = yield from client.send_message(message.channel, _time.getTimezone(command[1]))
 
                     elif len(command) > 2:
-                        botTalk = yield from client.send_message(message.channel, "I don't understand what you're saying\nuse `!help time` for more info")
-                        
+                        botTalk = yield from client.send_message(message.channel, "I don't understand what you're saying\nuse `{}help time` for more info".format(settings.operator))
+
                     else:
                         botTalk = yield from client.send_message(message.channel, _time.getTime())
 
