@@ -18,12 +18,12 @@ Todo:
 - [ ] Add polls
 - [ ] Add giveaways
 - [x] /help
-- [ ] */rules*
+- [x] */rules*
 - [x] /time
 - [ ] /games
 - [ ] */links*
 - [ ] */specs*
-- [x] */youtube*
+- [ ] */youtube*
 - [ ] */twitter*
 - [ ] */twitch*
 - [ ] */patreon*

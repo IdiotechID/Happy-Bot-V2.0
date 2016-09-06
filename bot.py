@@ -106,12 +106,7 @@ def on_message(message):
                     yield from client.delete_message(message)
 
                 elif command[0] == "youtube":
-                    botTalk = yield from client.send_message(message.channel, "https://www.youtube.com/idiotechgaming")
-                    deleteThis.append(botTalk)
-                    yield from client.delete_message(message)
-                    yield from asyncio.sleep(10)
-                    for msg in deleteThis:
-                        yield from client.delete_message(msg)
+                    print("Do the magic")
 
                 elif command[0] == "help":
                     botTalk = yield from client.send_message(message.channel, settings.helpText)
