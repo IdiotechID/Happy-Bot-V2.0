@@ -1,8 +1,7 @@
 import discord, asyncio, logging, random, time
 
 import settings, autoresponses
-from commands import _time
-from commands import joke
+from commands import _time, joke
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -25,8 +24,12 @@ def on_ready():
 @client.event
 @asyncio.coroutine
 def on_message(message):
-    #Only listen to messages not from the bot.
-    if message.author.id != client.user.id:
+
+    #A bool for making sure only one giveaway is going at once.
+    giveawayActive = False
+
+    #Only listen to messages not from a bot.
+    if not message.author.bot:
 
         #I use this a lot and I'm lazy.
         messagelower = message.content.lower()
@@ -61,12 +64,31 @@ def on_message(message):
             isMod = False
 
             for role in message.author.roles:
-                if role.id == settings.modRole:
+                if role.id in settings.modRoles:
                     isMod = True
 
             if isMod:
                 #Mod only commands
-                print("")
+                print()
+
+                "!giveaway start <name>"
+                if command[0] == "giveaway" and message.channel in settings.giveawayChannels:
+
+                    if command[1] == "start":
+
+                        #If there's already a giveaway on
+                        if giveawayActive:
+                            yield from client.send_message(message.channel, )
+
+                        elif not giveawayActive:
+                            giveawayActive = True
+
+                    if command[1] == "stop":
+
+                        #If there's already a giveaway on
+                        if giveawayActive:
+                            giveawayActive = False
+
 
             #@everyone commands.
             if message.content.startswith(settings.operator):
@@ -81,6 +103,32 @@ def on_message(message):
 
                 elif command[0] == "joke":
                     yield from client.send_message(message.channel, joke.getJoke())
+                    yield from client.delete_message(message)
+
+                elif command[0] == "youtube":
+                    botTalk = yield from client.send_message(message.channel, "https://www.youtube.com/idiotechgaming")
+                    deleteThis.append(botTalk)
+                    yield from client.delete_message(message)
+                    yield from asyncio.sleep(10)
+                    for msg in deleteThis:
+                        yield from client.delete_message(msg)
+
+                elif command[0] == "help":
+                    botTalk = yield from client.send_message(message.channel, settings.helpText)
+                    deleteThis.append(botTalk)
+                    yield from client.delete_message(message)
+                    yield from asyncio.sleep(10)
+                    for msg in deleteThis:
+                        yield from client.delete_message(msg)
+
+                elif command[0] == "rules":
+                    botTalk = yield from client.send_message(message.channel, settings.rulesText)
+                    deleteThis.append(botTalk)
+                    yield from client.delete_message(message)
+                    yield from asyncio.sleep(10)
+                    for msg in deleteThis:
+                        yield from client.delete_message(msg)
+
 
 
 client.run(token)
