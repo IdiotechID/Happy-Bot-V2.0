@@ -12,7 +12,7 @@ def getTime():
         timezones += "| **" + zone + " " + "**" + ": {0}".format(time.strftime("%I:%M %p")) + " "
     return timezones
     
-    def getTimezone(loc):
+def getTimezone(loc):
     """
    Function to get local time in cities
    :return: Dictionary with {"city":"%H:%M"}
