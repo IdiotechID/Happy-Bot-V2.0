@@ -69,7 +69,6 @@ def on_message(message):
 
             if isMod:
                 #Mod only commands
-                print()
 
                 "!giveaway start <name>"
                 if command[0] == "giveaway" and message.channel in settings.giveawayChannels:
