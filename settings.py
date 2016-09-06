@@ -3,6 +3,8 @@ modRoles = ["222359639575101442"] #The id of the mod role(s). Can be found by ty
 #What you use to trigger a command (EG: !help OR /help)
 operator = "!"
 
+Specs = "Idiotech Specs goes here"
+
 helpText = """Here are all the current commands:
 <> means an optional argument
 [] means a required argument
