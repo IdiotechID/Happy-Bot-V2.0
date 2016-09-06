@@ -89,13 +89,21 @@ def on_message(message):
             #@everyone commands.
             if message.content.startswith(settings.operator):
 
-                if command[0] == "time":
-                    botTalk = yield from client.send_message(message.channel, _time.getTime())
-                    deleteThis.append(botTalk)
+                if command[0].split()[0] == "time":
+
+                    if len(command) == 2:
+                        botTalk = yield from client.send_message(message.channel, _time.getTimezone(command[1]))
+
+                    elif len(command) > 2:
+                        botTalk = yield from client.send_message(message.channel, "I don't understand what you're saying\nuse `!help time` for more info")
+                        
+                    else:
+                        botTalk = yield from client.send_message(message.channel, _time.getTime())
+
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10)
-                    for msg in deleteThis:
-                        yield from client.delete_message(msg)
+                    yield from asyncio.sleep(10);
+                    yield from client.delete_message(botTalk)
 
                 elif command[0] == "joke":
                     yield from client.send_message(message.channel, joke.getJoke())
