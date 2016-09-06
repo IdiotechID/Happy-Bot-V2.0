@@ -20,19 +20,20 @@ with open('token.txt', 'r') as f:
 b_Commands = {
     'help': [settings.helpText],
     'rules': [settings.rulesText],
-    'twitter': ['https://twitter.com/idiotechgaming'],
-    'specs': [settings.Specs],
-    'reddit': ['https://www.reddit.com/r/idiotechgaming/'],
-    'twitch': ['https://www.twitch.tv/idiotechgaming'],
-    'patreon': ['https://www.patreon.com/IdiotechGaming'],
-    'donate': ['i dont know what happens here'],
-    'facebook': ['https://www.facebook.com/idiotechgaming'],
+    'twitter': ['<https://twitter.com/idiotechgaming>'],
+    'specs': [settings.specs],
+    'reddit': ['<https://www.reddit.com/r/idiotechgaming/>'],
+    'twitch': ['<https://www.twitch.tv/idiotechgaming>'],
+    'patreon': ['<https://www.patreon.com/IdiotechGaming>'],
+    'donate': ['<https://www.twitchalerts.com/donate/idiotechgaming>'],
+    'facebook': ['<https://www.facebook.com/idiotechgaming>'],
+    "links" : [settings.links],
 }
 
 @client.event
 @asyncio.coroutine
 def on_ready():
-    print('idiotech-gaming-bot running as', client.user.name)
+    print("idiotech-gaming-bot running as", client.user.name)
 
 @client.event
 @asyncio.coroutine

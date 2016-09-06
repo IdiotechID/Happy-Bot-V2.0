@@ -19,15 +19,15 @@ Todo:
 - [x] */rules*
 - [x] /time
 - [ ] /games
-- [ ] */links*
-- [ ] */specs*
-- [ ] */youtube*
-- [ ] */twitter*
-- [ ] */twitch*
-- [ ] */patreon*
-- [ ] */donate*
-- [ ] */facebook*
-- [ ] */reddit*
+- [x] */links*
+- [x] */specs*
+- [x] */youtube*
+- [x] */twitter*
+- [x] */twitch*
+- [x] */patreon*
+- [x] */donate*
+- [x] */facebook*
+- [x] */reddit*
 - [ ] /roll DiceSides
 - [ ] /fight PlayerName
 - [ ] /hug @Username

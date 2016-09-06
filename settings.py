@@ -3,7 +3,24 @@ modRoles = ["222359639575101442"] #The id of the mod role(s). Can be found by ty
 #What you use to trigger a command (EG: !help OR /help)
 operator = "!"
 
-Specs = "Idiotech Specs goes here"
+specs = """**Hardware & System Specs**:
+Case: Corsair 650D
+CPU: Intel i7 5820K
+RAM: Kingston HyperX 16GB DDR4 2133 Mhz
+GPU: Gigabtye G1 Gaming GTX 980
+Motherboard: MSI X99A SLI Plus
+SSD: Samsung 840 EVO 120GB
+HDD: 2x Seagate Barracuda 2TB
+OS: Windows 10
+Mic: Blue Yeti"""
+
+links = """<https://www.youtube.com/idiotechgaming>
+<https://www.twitch.tv/idiotechgaming>
+<https://www.patreon.com/IdiotechGaming>
+<https://www.twitchalerts.com/donate/idiotechgaming>
+<https://twitter.com/IdiotechGaming>
+<https://www.facebook.com/idiotechgaming>
+<https://www.reddit.com/r/idiotechgaming/>"""
 
 helpText = """Here are all the current commands:
 <> means an optional argument
@@ -31,5 +48,3 @@ rulesText = "Please see <#222739924313440257>"
 
 #The text to say when there's already a running giveaway
 giveawayOngoing = "You can't have two giveaways at once."
-
-"something silly"
