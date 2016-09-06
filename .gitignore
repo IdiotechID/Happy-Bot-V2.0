@@ -1,4 +1,5 @@
 /token.txt
+/youtubeToken.txt
 /oldBot/*
 /*.log
 /__pycache__/*
