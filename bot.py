@@ -1,7 +1,7 @@
 import discord, asyncio, logging, random, time
 
 import settings, autoresponses
-from commands import _time, joke
+from commands import _time, joke, youtube
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -106,7 +106,9 @@ def on_message(message):
                     yield from client.delete_message(message)
 
                 elif command[0] == "youtube":
-                    print("Do the magic")
+                    botTalk = yield from client.send_message(message.channel, youtube._youtube())
+                    yield from client.delete_message(message)
+                    yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
                 elif command[0] == "help":
                     botTalk = yield from client.send_message(message.channel, settings.helpText)
