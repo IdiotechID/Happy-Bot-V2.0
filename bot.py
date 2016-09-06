@@ -78,7 +78,7 @@ def on_message(message):
 
                         #If there's already a giveaway on
                         if giveawayActive:
-                            yield from client.send_message(message.channel, )
+                            yield from client.send_message(message.channel, settings.giveawayOngoing)
 
                         elif not giveawayActive:
                             giveawayActive = True
