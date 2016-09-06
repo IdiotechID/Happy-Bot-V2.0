@@ -29,3 +29,5 @@ rulesText = "Please see <#222739924313440257>"
 
 #The text to say when there's already a running giveaway
 giveawayOngoing = "You can't have two giveaways at once."
+
+"something silly"
