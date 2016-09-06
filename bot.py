@@ -15,8 +15,8 @@ client = discord.Client()
 #using a .txt file, not a .py file to keep setup simple
 with open('token.txt', 'r') as f:
     token = f.read().strip("\n")
-    
-    
+
+
 b_Commands = {
     'help': [settings.helpText],
     'rules': [settings.rulesText],
@@ -56,7 +56,7 @@ def on_message(message):
                 yield from client.send_message(message.channel, random.choice(autoresponses.responses[response]))
 
         #checks for trigger words in questions
-        if (message.content[-1] == "?" and "bot" in messagelower) or client.user.mention in message.content:
+        if (message.content[-1] == "?" and ("bot" in messagelower or client.user.mentioned_in(message))):
             found = False
             for response in autoresponses.questionResponses:
                 if response in messagelower:
