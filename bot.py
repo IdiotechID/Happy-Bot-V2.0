@@ -82,24 +82,7 @@ def on_message(message):
 
             if isMod:
                 #Mod only commands
-
-                "!giveaway start <name>"
-                if command[0] == "giveaway" and message.channel in settings.giveawayChannels:
-
-                    if command[1] == "start":
-
-                        #If there's already a giveaway on
-                        if giveawayActive:
-                            yield from client.send_message(message.channel, settings.giveawayOngoing)
-
-                        elif not giveawayActive:
-                            giveawayActive = True
-
-                    if command[1] == "stop":
-
-                        #If there's already a giveaway on
-                        if giveawayActive:
-                            giveawayActive = False
+                print("Annoying placeholder")
 
 
             #@everyone commands.
