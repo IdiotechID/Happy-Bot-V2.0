@@ -2,7 +2,7 @@
 The bot used for irritating the members of Idiotech's Discord server. https://discord.gg/0z3KQXI6apyyeNOD
 
 
-If you want to develop/test locally you'll need a bot user token from [here](https://discordapp.com/developers/docs/intro). Create a new file in the root folder, named `token.txt` and paste your token in.
+If you want to develop/test locally you'll need a bot user token from [here](https://discordapp.com/developers/docs/intro). Create a new file in the root folder, named `token.txt` and paste your token in. You also need a youtube API token from [here](https://console.developers.google.com/apis/dashboard). Create a new file in the root folder, named `youtubeToken.txt` and paste your youtube API token in
 
 To install discord.py do `python3 -m pip install -U discord.py`. All other libs should be bundled with python3
 
