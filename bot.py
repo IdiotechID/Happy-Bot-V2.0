@@ -15,6 +15,19 @@ client = discord.Client()
 #using a .txt file, not a .py file to keep setup simple
 with open('token.txt', 'r') as f:
     token = f.read().strip("\n")
+    
+    
+b_Commands = {
+    'help': [settings.helpText],
+    'rules': [settings.rulesText],
+    'twitter': ['https://twitter.com/idiotechgaming'],
+    'specs': [settings.Specs],
+    'reddit': ['https://www.reddit.com/r/idiotechgaming/'],
+    'twitch': ['https://www.twitch.tv/idiotechgaming'],
+    'patreon': ['https://www.patreon.com/IdiotechGaming'],
+    'donate': ['i dont know what happens here'],
+    'facebook': ['https://www.facebook.com/idiotechgaming'],
+}
 
 @client.event
 @asyncio.coroutine
@@ -109,21 +122,10 @@ def on_message(message):
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
-                elif command[0] == "help":
-                    botTalk = yield from client.send_message(message.channel, settings.helpText)
-                    deleteThis.append(botTalk)
+                elif command[0] in b_Commands:
+                    botTalk = yield from client.send_message(message.channel, b_Commands[command[0]][0])
                     yield from client.delete_message(message)
-                    yield from asyncio.sleep(10)
-                    for msg in deleteThis:
-                        yield from client.delete_message(msg)
-
-                elif command[0] == "rules":
-                    botTalk = yield from client.send_message(message.channel, settings.rulesText)
-                    deleteThis.append(botTalk)
-                    yield from client.delete_message(message)
-                    yield from asyncio.sleep(10)
-                    for msg in deleteThis:
-                        yield from client.delete_message(msg)
+                    yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
 
 
