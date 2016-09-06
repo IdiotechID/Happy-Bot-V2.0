@@ -26,7 +26,7 @@ helpText = """Here are all the current commands:
 <> means an optional argument
 [] means a required argument
 
-`{0}time` Prints the time in several timezones
+`{0}time <place>` Prints the time in several timezones or the one supplied
 
 **Mod only commands**
 `{0}giveaway start [Name]` - Starts a giveaway with the supplied name
