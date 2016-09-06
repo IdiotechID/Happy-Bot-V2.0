@@ -15,7 +15,7 @@ def getTime():
 def getTimezone(loc):
     """
     Function to get local time in cities
-    :return: Dictionary with {"city":"%H:%M"}
+    :return: Dictionary with {"city":"%I:%M %p"}
     """
 
     places = {}
@@ -59,7 +59,7 @@ def getTimezone(loc):
 
     if "place" in locals():
         time = now_utc.astimezone(pytz.timezone(place))
-        fmttime = time.strftime('%I:%M%p')
+        fmttime = time.strftime('%I:%M %p')
         output[loc] = fmttime
         return "Current time in **{0}** is **{1}**".format(place, output[loc])
     else:
