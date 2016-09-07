@@ -1,7 +1,7 @@
-import discord, asyncio, logging, random, time
+import discord, asyncio, logging, random, time, requests, json
 
 import settings, autoresponses
-from commands import __time, joke, youtube, __help, roll, bullyGiant
+from commands import __time, joke, youtube, __help, roll, bullyGiant, poll
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -16,6 +16,7 @@ client = discord.Client()
 with open('token.txt', 'r') as f:
     token = f.read().strip("\n")
 
+pollwebsite = "https://strawpoll.me/api/v2/polls"
 
 b_Commands = {
     'rules': [settings.rulesText],
