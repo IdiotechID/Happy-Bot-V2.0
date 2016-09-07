@@ -41,7 +41,7 @@ class bullyGiantHelp():
     call = "bullygiant"
     #Help text
     helpText = "Don't be stupid"
-    
+
 class pollHelp():
     #base call
     call = "poll"
@@ -55,7 +55,8 @@ moduleLookup = {
     timeHelp.call : timeHelp,
     youtubeHelp.call : youtubeHelp,
     giveawayHelp.call : giveawayHelp,
-    bullyGiantHelp.call : bullyGiantHelp
+    bullyGiantHelp.call : bullyGiantHelp,
+    pollHelp.call : pollHelp
 }
 
 #Please supply a string when using this EG( __help.getHelp("roll") )
