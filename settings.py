@@ -26,7 +26,10 @@ helpText = """Here are all the current commands:
 <> means an optional argument
 [] means a required argument
 
-`{0}time <place>` Prints the time in several timezones or the one supplied
+`{0}time <place>` Says the time in several timezones or the one supplied
+`{0}joke` Tells you a joke
+`{0}roll <sides>` Rolls a die with the amount of sides you ask for. Default is 6
+`{0}youtube` Shows Idiotech's latest video
 
 **Mod only commands**
 `{0}giveaway start [Name]` - Starts a giveaway with the supplied name
