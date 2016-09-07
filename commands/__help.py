@@ -41,6 +41,12 @@ class bullyGiantHelp():
     call = "bullygiant"
     #Help text
     helpText = "Don't be stupid"
+    
+class pollHelp():
+    #base call
+    call = "poll"
+    #help text
+    helpText = "You need to have at least 3 arguments to use poll, the title and at least 2 options\nEG: `{}poll title; option 1; option 2`\n\You can set up to 10 options".format(settings.operator) `
 
 moduleLookup = {
     helpHelp.call : helpHelp,
