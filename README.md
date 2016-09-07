@@ -31,4 +31,4 @@ Todo:
 - [ ] /roll DiceSides
 - [ ] /fight PlayerName
 - [ ] /hug @Username
-- [ ] /help **command**
+- [x] /help **command**
