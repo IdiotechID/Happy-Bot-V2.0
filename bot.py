@@ -121,7 +121,7 @@ def on_message(message):
 
                 elif command[0] == __help.helpHelp.call:
                     if len(command) == 1:
-                        botTalk = yield from client.send_message(message.channel, settings.helpText)
+                        botTalk = yield from client.send_message(message.channel, __help.commandError(__help.helpHelp))
 
                     else:
                         botTalk = yield from client.send_message(message.channel, __help.getHelp(command[1]))
@@ -131,7 +131,7 @@ def on_message(message):
 
                 elif command[0] == __help.rollHelp.call:
                     if len(command) < 1:
-                        yield from client.send_message(message.channel, settings.helpText)
+                        yield from client.send_message(message.channel, __help.commandError(__help.rollHelp))
 
                     elif len(command) == 1:
                         yield from client.send_message(message.channel, roll.roll(6))
