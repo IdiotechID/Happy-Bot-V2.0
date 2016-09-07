@@ -23,18 +23,18 @@ links = """<https://www.youtube.com/idiotechgaming>
 <https://www.reddit.com/r/idiotechgaming/>"""
 
 helpText = """Here are all the current commands:
-<> means an optional argument
-[] means a required argument
-
-`{0}time <place>` Says the time in several timezones or the one supplied
+`{0}time place*` Says the time in several timezones or the one supplied
 `{0}joke` Tells you a joke
-`{0}roll <sides>` Rolls a die with the amount of sides you ask for. Default is 6
+`{0}roll sides*` Rolls a die with the amount of sides you ask for. Default is 6
 `{0}youtube` Shows Idiotech's latest video
 
 **Mod only commands**
-`{0}giveaway start [Name]` - Starts a giveaway with the supplied name
+`{0}giveaway start Giveaway-Name` - Starts a giveaway with the supplied name
 `{0}giveaway stop` - Stops the current giveaway
 `{0}bullygiant` - It bullys giant ... duh.
+`{0}poll title; option 1; option 2`\nYou can set up to 10 options`
+
+Arguments with an * after it isn't needed
 """.format(operator)
 
 #timezones to output on !time from TZ row of https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
