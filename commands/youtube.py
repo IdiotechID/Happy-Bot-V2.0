@@ -2,6 +2,13 @@ import json, os
 import urllib.request as ur
 from datetime import datetime
 
+#Help vars
+
+#base call
+call = "youtube"
+#Help text
+helpText = "Don't be stupid"
+
 #You need to make youtubeToken.txt and paste a youtube api token in it.
 #using a .txt file, not a .py file to keep setup simple
 with open('youtubeToken.txt', 'r') as f:

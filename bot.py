@@ -1,7 +1,7 @@
 import discord, asyncio, logging, random, time
 
 import settings, autoresponses
-from commands import _time, joke, youtube
+from commands import _time, joke, youtube, _help
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -18,7 +18,6 @@ with open('token.txt', 'r') as f:
 
 
 b_Commands = {
-    'help': [settings.helpText],
     'rules': [settings.rulesText],
     'twitter': ['<https://twitter.com/idiotechgaming>'],
     'specs': [settings.specs],
@@ -48,9 +47,6 @@ def on_message(message):
         #I use this a lot and I'm lazy.
         messagelower = message.content.lower()
 
-        #An array of messages to be deleted. Also the only meme on the server.
-        deleteThis = []
-
         #checks for trigger words in messages
         for response in autoresponses.responses:
             if response in messagelower:
@@ -72,8 +68,10 @@ def on_message(message):
 
         #Checks for a command
         if message.content.startswith(settings.operator):
+
             #The command without the operator EG: giveaway start
             command = message.content[1:].lower().split()
+
             #bool for keeping track of if the author is a mod.
             isMod = False
 
@@ -83,27 +81,34 @@ def on_message(message):
 
             if isMod:
                 #Mod only commands
-                print("Annoying placeholder")
+                if message.channel.id in settings.giveawayChannels and command[0] == "giveaway":
+
+                    if len(command) < 2:
+
+                        if command[1] == "start":
+                            print("start")
+
+                        elif command[1] == "stop":
+                            print("Stop")
 
 
             #@everyone commands.
             if message.content.startswith(settings.operator):
 
-                if command[0].split()[0] == "time":
+                if command[0].split()[0] == _time.call:
 
                     if len(command) == 2:
                         botTalk = yield from client.send_message(message.channel, _time.getTimezone(command[1]))
 
+                    #if there's too many arguments
                     elif len(command) > 2:
-                        botTalk = yield from client.send_message(message.channel, "I don't understand what you're saying\nuse `{}help time` for more info".format(settings.operator))
+                        botTalk = yield from client.send_message(message.channel, _help.commandError(_time))
 
                     else:
                         botTalk = yield from client.send_message(message.channel, _time.getTime())
 
                     yield from client.delete_message(message)
-                    yield from asyncio.sleep(10)
-                    yield from asyncio.sleep(10);
-                    yield from client.delete_message(botTalk)
+                    yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
                 elif command[0] == "joke":
                     yield from client.send_message(message.channel, joke.getJoke())
@@ -111,6 +116,16 @@ def on_message(message):
 
                 elif command[0] == "youtube":
                     botTalk = yield from client.send_message(message.channel, youtube._youtube())
+                    yield from client.delete_message(message)
+                    yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
+
+                elif command[0] == "help":
+                    if len(command) == 1:
+                        botTalk = yield from client.send_message(message.channel, settings.helpText)
+
+                    else:
+                        botTalk = yield from client.send_message(message.channel, _help.getHelp(command[1]))
+
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
