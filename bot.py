@@ -91,6 +91,9 @@ def on_message(message):
                         elif command[1] == "stop":
                             print("Stop")
 
+                elif command[0] == __help.bullyGiantHelp.call:
+                    yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
+                    yield from client.delete_message(message)
 
             #@everyone commands.
             if message.content.startswith(settings.operator):
@@ -139,9 +142,6 @@ def on_message(message):
                         yield from client.send_message(message.channel, roll.roll(command[1]))
 
                     yield from client.delete_message(message)
-
-                elif command[0] == __help.bullyGiantHelp.call:
-                    yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
 
 
                 elif command[0] in b_Commands:
