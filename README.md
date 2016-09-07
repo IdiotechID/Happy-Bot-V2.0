@@ -28,7 +28,7 @@ Todo:
 - [x] */donate*
 - [x] */facebook*
 - [x] */reddit*
-- [ ] /roll DiceSides
+- [x] /roll DiceSides
 - [ ] /fight PlayerName
 - [ ] /hug @Username
 - [x] /help **command**
