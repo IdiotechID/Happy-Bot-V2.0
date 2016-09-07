@@ -1,7 +1,7 @@
 import discord, asyncio, logging, random, time
 
 import settings, autoresponses
-from commands import _time, joke, youtube, _help
+from commands import __time, joke, youtube, __help, roll
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -81,7 +81,7 @@ def on_message(message):
 
             if isMod:
                 #Mod only commands
-                if message.channel.id in settings.giveawayChannels and command[0] == "giveaway":
+                if message.channel.id in settings.giveawayChannels and command[0] == giveaway.call:
 
                     if len(command) < 2:
 
@@ -95,39 +95,52 @@ def on_message(message):
             #@everyone commands.
             if message.content.startswith(settings.operator):
 
-                if command[0].split()[0] == _time.call:
+                if command[0].split()[0] == __help.timeHelp.call:
 
                     if len(command) == 2:
-                        botTalk = yield from client.send_message(message.channel, _time.getTimezone(command[1]))
+                        botTalk = yield from client.send_message(message.channel, __time.getTimezone(command[1]))
 
                     #if there's too many arguments
                     elif len(command) > 2:
-                        botTalk = yield from client.send_message(message.channel, _help.commandError(_time))
+                        botTalk = yield from client.send_message(message.channel, __help.commandError(__time))
 
                     else:
-                        botTalk = yield from client.send_message(message.channel, _time.getTime())
+                        botTalk = yield from client.send_message(message.channel, __time.getTime())
 
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
-                elif command[0] == "joke":
+                elif command[0] == __help.jokeHelp.call:
                     yield from client.send_message(message.channel, joke.getJoke())
                     yield from client.delete_message(message)
 
-                elif command[0] == "youtube":
+                elif command[0] == __help.youtubeHelp.call:
                     botTalk = yield from client.send_message(message.channel, youtube._youtube())
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
-                elif command[0] == "help":
+                elif command[0] == __help.helpHelp.call:
                     if len(command) == 1:
                         botTalk = yield from client.send_message(message.channel, settings.helpText)
 
                     else:
-                        botTalk = yield from client.send_message(message.channel, _help.getHelp(command[1]))
+                        botTalk = yield from client.send_message(message.channel, __help.getHelp(command[1]))
 
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
+
+                elif command[0] == __help.rollHelp.call:
+                    if len(command) < 1:
+                        yield from client.send_message(message.channel, settings.helpText)
+
+                    elif len(command) == 1:
+                        yield from client.send_message(message.channel, roll.roll(6))
+
+                    else:
+                        yield from client.send_message(message.channel, roll.roll(command[1]))
+
+                    yield from client.delete_message(message)
+
 
                 elif command[0] in b_Commands:
                     botTalk = yield from client.send_message(message.channel, b_Commands[command[0]][0])

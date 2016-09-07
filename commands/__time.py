@@ -2,14 +2,6 @@ import settings
 from datetime import datetime
 import pytz
 
-#Help vars
-
-#base call
-call = "time"
-#Help text
-helpText = "Don't be stupid"
-
-
 def getTime():
     timezones = ""
     zone = settings.timezones[0]
