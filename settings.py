@@ -34,6 +34,7 @@ helpText = """Here are all the current commands:
 **Mod only commands**
 `{0}giveaway start [Name]` - Starts a giveaway with the supplied name
 `{0}giveaway stop` - Stops the current giveaway
+`{0}bullygiant` - It bullys giant ... duh.
 """.format(operator)
 
 #timezones to output on !time from TZ row of https://en.wikipedia.org/wiki/List_of_tz_database_time_zones

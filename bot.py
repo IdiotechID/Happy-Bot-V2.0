@@ -1,7 +1,7 @@
 import discord, asyncio, logging, random, time
 
 import settings, autoresponses
-from commands import __time, joke, youtube, __help, roll
+from commands import __time, joke, youtube, __help, roll, bullyGiant
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -139,6 +139,9 @@ def on_message(message):
                         yield from client.send_message(message.channel, roll.roll(command[1]))
 
                     yield from client.delete_message(message)
+
+                elif command[0] == __help.bullyGiantHelp.call:
+                    yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
 
 
                 elif command[0] in b_Commands:

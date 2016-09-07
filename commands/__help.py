@@ -36,18 +36,25 @@ class giveawayHelp():
     #Help text
     helpText = "Don't be stupid"
 
+class bullyGiantHelp():
+    #base call
+    call = "bullygiant"
+    #Help text
+    helpText = "Don't be stupid"
+
 moduleLookup = {
     helpHelp.call : helpHelp,
     rollHelp.call : rollHelp,
     jokeHelp.call : jokeHelp,
     timeHelp.call : timeHelp,
     youtubeHelp.call : youtubeHelp,
-    giveawayHelp.call : giveawayHelp
+    giveawayHelp.call : giveawayHelp,
+    bullyGiantHelp.call : bullyGiantHelp
 }
 
 #Please supply a string when using this EG( __help.getHelp("roll") )
 def getHelp(commandString):
-    
+
     #takes a string (EG: time) and returns the help for that command
     try:
         return moduleLookup[commandString].helpText
