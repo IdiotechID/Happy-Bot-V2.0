@@ -94,6 +94,24 @@ def on_message(message):
                 elif command[0] == __help.bullyGiantHelp.call:
                     yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
                     yield from client.delete_message(message)
+                
+                elif command[0] == __help.pollHelp.call:
+
+                    if len(command) < 4:
+                        botFail = yield from client.send_message(message.channel, "You need at least 3 arguments to use !poll\nfor more info use `!help poll`")
+                        yield from asyncio.sleep(10)
+                        yield from client.delete_message(botFail)
+                    else:
+                        # process arguments and sends poll data to strawpoll.me api
+                        argString = poll.makeArgString(command)
+                        jsondata = poll.processArguments(argString)
+                        strawpoll = requests.post(pollwebsite, json=jsondata)
+
+                        print(argString)
+                        print(jsondata)
+
+                        botTalk = yield from client.send_message(message.channel, "Poll sucessfully created\nLink: http://www.strawpoll.me/{0}".format(strawpoll.json()['id']))                    
+                    
 
             #@everyone commands.
             if message.content.startswith(settings.operator):
