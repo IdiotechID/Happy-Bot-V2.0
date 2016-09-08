@@ -71,8 +71,7 @@ def on_message(message):
         if message.content.startswith(settings.operator):
 
             #The command without the operator EG: giveaway start
-            command = message.content[len(settings.operator):].lower().lstrip(settings.operator).split()
-            print(command,len(command))
+            command = message.content.lower().lstrip(settings.operator).split()
             #If the message is just the operator / a few operators
             if len(command) < 1:
                 botTalk = yield from client.send_message(message.channel, settings.helpText)
