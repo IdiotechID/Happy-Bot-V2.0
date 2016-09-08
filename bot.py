@@ -43,7 +43,7 @@ def on_message(message):
     giveawayActive = False
 
     #Only listen to messages not from a bot.
-    if not message.author.bot:
+    if not message.author.bot and message.channel.id not in settings.forbiddenChannels:
 
         #I use this a lot and I'm lazy.
         messagelower = message.content.lower()
@@ -71,7 +71,14 @@ def on_message(message):
         if message.content.startswith(settings.operator):
 
             #The command without the operator EG: giveaway start
-            command = message.content[1:].lower().split()
+            command = message.content[len(settings.operator):].lower().lstrip(settings.operator).split()
+            print(command,len(command))
+            #If the message is just the operator / a few operators
+            if len(command) < 1:
+                botTalk = yield from client.send_message(message.channel, settings.helpText)
+                yield from client.delete_message(message)
+                yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
+                return
 
             #bool for keeping track of if the author is a mod.
             isMod = False
@@ -95,7 +102,7 @@ def on_message(message):
                 elif command[0] == __help.bullyGiantHelp.call:
                     yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
                     yield from client.delete_message(message)
-                
+
                 elif command[0] == __help.pollHelp.call:
 
                     if len(command) < 4:
@@ -111,8 +118,8 @@ def on_message(message):
                         print(argString)
                         print(jsondata)
 
-                        botTalk = yield from client.send_message(message.channel, "Poll sucessfully created\nLink: http://www.strawpoll.me/{0}".format(strawpoll.json()['id']))                    
-                    
+                        botTalk = yield from client.send_message(message.channel, "Poll sucessfully created\nLink: http://www.strawpoll.me/{0}".format(strawpoll.json()['id']))
+
 
             #@everyone commands.
             if message.content.startswith(settings.operator):

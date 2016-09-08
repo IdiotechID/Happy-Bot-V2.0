@@ -1,7 +1,25 @@
 modRoles = ["222359639575101442"] #The id of the mod role(s). Can be found by typing "\@MOD-ROLE-MENTION"
 
+forbiddenChannels = ["220502476850200595","222739924313440257"] #Channel id(s) for channels the bot is wanted in. Ids can be found by typing "\#forbidden-channel"
+
 #What you use to trigger a command (EG: !help OR /help)
 operator = "!"
+
+#timezones to output on !time from TZ row of https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezones = [
+"US/Pacific",
+"Europe/Berlin",
+"Australia/Victoria"
+]
+
+#The id of the giveaway channel(s). Can be found by typing "\#giveaway-channel"
+giveawayChannels = ["222739948153995264"]
+
+#The text displayed for !rules
+rulesText = "Please see <#222739924313440257>"
+
+#The text to say when there's already a running giveaway
+giveawayOngoing = "You can't have two giveaways at once."
 
 specs = """**Hardware & System Specs**:
 Case: Corsair 650D
@@ -34,21 +52,4 @@ helpText = """Here are all the current commands:
 `{0}bullygiant` - It bullys giant ... duh.
 `{0}poll title; option 1; option 2`\nYou can set up to 10 options`
 
-Arguments with an * after it isn't needed
-""".format(operator)
-
-#timezones to output on !time from TZ row of https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezones = [
-"US/Pacific",
-"Europe/Berlin",
-"Australia/Victoria"
-]
-
-#The id of the giveaway channel(s). Can be found by typing "\#giveaway-channel"
-giveawayChannels = ["222739948153995264"]
-
-#The text displayed for !rules
-rulesText = "Please see <#222739924313440257>"
-
-#The text to say when there's already a running giveaway
-giveawayOngoing = "You can't have two giveaways at once."
+Arguments with an * after it aren't  needed""".format(operator)
