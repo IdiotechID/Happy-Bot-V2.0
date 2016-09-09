@@ -1,9 +1,9 @@
 import random
 
 #Giant's ID is 176351276701843457
-giantId = "222968513722187776"
+giantId = "176351276701843457"
 
-insults = ["Twat","Cunt","Cock","Dick","Pussy","Arsehole","Bugger","Fucker"]
+insults = ["Twat","Wanker","Anus", "Wang",]
 
 def gen(message):
     try:
@@ -13,9 +13,9 @@ def gen(message):
 
 
     if random.randint(1,100) < 33:
-        newName = giant.name.split()[0] + " \"" + random.choice(insults) + "\" " + giant.name.split()[1]
+        newName = "Giant" + " \"" + random.choice(insults) + "\" " + "Dwarf"
 
     else:
-        newName = giant.name.split()[0] + " " + random.choice(insults)
+        newName = "Giant" + " " + random.choice(insults)
 
     return newName
